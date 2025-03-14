@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Hand } from "lucide-react";
 
 export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const menuItems = [
     { title: "Home", link: "/" },
@@ -21,7 +19,7 @@ export const NavBar = () => {
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="font-bold text-xl">AR</div>
-        
+
         {/* Menu Tengah */}
         <div className="hidden md:flex flex-1 justify-center space-x-6">
           {menuItems.map((item, index) => (
@@ -30,21 +28,18 @@ export const NavBar = () => {
               href={item.link}
               className="px-3 py-2 rounded-md text-sm font-medium relative group"
             >
-              <span className="relative after:absolute after:-bottom-1/4 after:left-0 after:h-0.5 after:w-0 group-hover:after:w-full after:transition-all after:duration-300 after:bg-blue-300">
+              <span className="relative after:absolute after:-bottom-1/4 after:left-0 after:h-0.5 after:w-0 group-hover:after:w-full after:transition-all after:duration-300 after:bg-[#84BFAA]">
                 {item.title}
               </span>
             </a>
           ))}
         </div>
-        
+
         {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className="hidden md:flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white"
-        >
-          {darkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-        </button>
-        
+        <div className="hidden md:flex items-center justify-center p-2 rounded-md">
+          <Hand className="h-6 w-6" />
+        </div>
+
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
           <button
